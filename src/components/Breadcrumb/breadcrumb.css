@@ -1,0 +1,10 @@
+.breadcrumb {
+    .breadcrumb__link {
+        font-size: 1.5rem;
+        font-weight: 700;
+        cursor: pointer;
+    }
+    .breadcrumb__separator {
+        color: #F2D12E;
+    }
+}

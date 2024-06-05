@@ -1,0 +1,13 @@
+.logo-section {
+    display: flex;
+    justify-content: space-between; 
+    padding: 1.5rem 1.75rem;
+    background-color: #FFFFFF;
+    box-shadow: 0px 7px 17px 0px rgba(0,0,0,0.3);
+}
+.navigation-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.75rem;
+}

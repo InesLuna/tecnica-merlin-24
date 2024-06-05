@@ -1,0 +1,17 @@
+.go-top-button {
+    background-color:  #F77825;
+    color: #FFFFFF;
+    font-weight: 700;
+    border-radius: 500px;
+    width: 3rem;
+    height: 3rem;
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+}
+.hidden {
+    display: none;
+}
+.block {
+    display: block;
+}

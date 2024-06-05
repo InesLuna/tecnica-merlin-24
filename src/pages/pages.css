@@ -1,0 +1,8 @@
+.page-layout {
+    margin: 0 3rem 5rem;
+}
+.cards-layout {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+}
