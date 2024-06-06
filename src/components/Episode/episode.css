@@ -1,0 +1,7 @@
+.episode {
+    height: fit-content;
+    padding: 1rem 2rem;
+    display: grid;
+    gap: 1.5rem;
+    flex: 2;
+}

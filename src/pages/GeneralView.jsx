@@ -73,23 +73,22 @@ const GeneralView = () => {
 
 
   return ( 
-    <div className=''>
+    <div className='page-layout'>
       <Header generalView handleChange={handleChange}/>
-      <div className='cards-layout page-layout'>
-        {
-          productList && productList.length > 0 ? (
-            <>
-              {
-                productList.map((p) => <ItemCard key={p.id.attributes['im:id']} podcast={p} /> )
-              }
-            </>
-          ) : <Loader/>
-        } 
-      </div>
       {
-        showButton ? <GoTopButton showButton={showButton}/> : null
-      }
+        productList && productList.length > 0 ? (
+          <div className='cards-layout'>
+            {
+              productList.map((p) => <ItemCard key={p.id.attributes['im:id']} podcast={p} /> )
+            }
+            {
+              showButton ? <GoTopButton showButton={showButton}/> : null
+            }
+          </div>
+        ) : <Loader/>
+      } 
     </div>
+      
   )
 };
 

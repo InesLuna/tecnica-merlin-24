@@ -1,27 +1,36 @@
 import Header from '../components/Header/Header';
 import ItemCard from '../components/ItemCard/ItemCard';
-import { useSelector, useDispatch } from 'react-redux';
-import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import Episode from '../components/Episode/Episode';
+import Loader from '../components/Loader/Loader';
+import { useSelector } from 'react-redux';
+import './pages.css';
 
-const EpisodeView = (props) => {
+const EpisodeView = () => {
     const actualEpisodeState = (state) => state.detailList.actualEpisode;
     const actualEpisode = useSelector(actualEpisodeState);
-
-    useEffect(()=> {
-        console.log(actualEpisode)
-    },[actualEpisode])
+    const actualPodcastState = (state) => state.detailList.actualPodcast;
+    const actualPodcast = useSelector(actualPodcastState);
+    const actualLoadingState = (state) => state.detailList.loading;
+    const loading = useSelector(actualLoadingState);
 
     return (
-    <>
-      {/* <Header errorView/> */}
-      <Link to='/'>la página principal</Link>
-      <div className='min-w-full min-h-full flex items-center justify-center flex-col'>
-        <p className='text-anton text-3xl text-teal-500 '>Parece que ha habído un error,</p>
-        <p className='text-anton text-3xl text-amber-400 '>so sorry!</p>
-      </div>
-      
-    </>
+      <div className='page-layout'>
+      <Header episodeView />
+      {
+        loading ? <Loader/> : (
+          <>
+            { actualPodcast && actualPodcast.length > 0  && (
+              <>
+                <section className='detail-layout'>
+                  <ItemCard podcast={actualPodcast[0]} isDetailview />
+                  <Episode episode={actualEpisode} />
+                </section>
+              </>
+            )}
+          </>
+        )
+      } 
+    </div>
   );}
   
   export default EpisodeView;

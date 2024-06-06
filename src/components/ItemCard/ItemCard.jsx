@@ -20,19 +20,29 @@ const ItemCard = (props) => {
   return (
     <>
       { podcast && isDetailview ? (
-        <div  className='detail-card'>
-          <img src={imageUrl} alt={title} />
-          <p className='font-roboto font-bold text-xl text-stone-900 mt-6'>{title}</p>
-          <p className='font-roboto text-lg text-stone-800 mt-3'>{author}</p>
+        <div  className='detail-card box-shadow-class'>
+          <img src={imageUrl} alt={title} className='detail-card__image' />
+          <div className='divider'/>
+          <div>
+            <p className='detail-card__title roboto-bold'>{title}</p>
+            <p className='detail-card__author roboto-regular-italic'>by {author}</p>
+          </div>
+          <div className='divider'/>
+          <div>
+            <p className='detail-card__title roboto-bold'>Description</p>
+            <p className='detail-card__summary roboto-regular-italic'>
+              Cras fringilla ullamcorper lacinia. Interdum et malesuada fames ac ante ipsum primis in faucibus. In in tempor enim. Integer molestie sit amet leo sit amet consectetur. Donec sodales ligula ut pretium pulvinar. Curabitur malesuada purus diam, ut aliquam justo consectetur quis. Aenean sit amet tincidunt magna.
+            </p>
+          </div>
         </div>
       ) : (
-        <Link to={`podcast/${id}`} className='landing-card' onClick={()=>handleClick()}>
+        <Link to={`podcast/${id}`} className='landing-card ' onClick={()=>handleClick()}>
           <div className='landing-card__image'>
             <img src={imageUrl} alt={title} />
           </div>
-          <div className='landing-card__content'>
-            <p className='landing-card__title font-bold text-xl text-stone-900 mt-6'>{title}</p>
-            <p className='landing-card__author text-lg text-stone-800 mt-3'>Author: {author}</p>
+          <div className='landing-card__content box-shadow-class'>
+            <p className='landing-card__title roboto-bold'>{title}</p>
+            <p className='landing-card__author'>Author: {author}</p>
           </div>
           
         </Link>

@@ -1,3 +1,10 @@
+.loader__wrapper {
+  min-height: 70vh;
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .loader {
     /* the colors */
     --c1: #F77825;

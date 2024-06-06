@@ -17,10 +17,12 @@ const router = createBrowserRouter([
   {
     path: 'podcast/:podcastId',
     element: <DetailView />,
+    errorElement: <ErrorView />,
   },
   {
     path: 'podcast/:podcastId/episode/:episodeId',
     element: <EpisodeView />,
+    errorElement: <ErrorView />,
   },
 ]);
 

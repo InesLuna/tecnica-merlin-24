@@ -86,4 +86,9 @@
 }
 body {
     font-family: "Roboto", sans-serif;
+    display: block;
+    min-height: 100vh;
+}
+.box-shadow-class {
+  box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.1);
 }

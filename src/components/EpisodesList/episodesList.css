@@ -1,0 +1,33 @@
+.episodes { 
+    flex: 2;
+    .episodes__title {
+        border-radius: .5rem;
+        padding: .5rem 2rem;
+        margin-bottom: 2rem;
+    }
+    .episodes__wrapper {
+        border-radius: .5rem;
+        padding: .5rem 2rem 2rem;
+    }
+    .episodes__episode {
+        display: grid;
+        grid-template-columns: auto 100px 100px;
+        padding: 1rem;
+        border-bottom: 1px solid rgba(0,0,0,0.2);
+        .episodes__track-name {
+            max-width: 500px;
+            text-overflow: ellipsis;
+            text-wrap: nowrap;
+            overflow: hidden;
+        }
+        .episodes__track-duration {
+            text-align: right;
+        }
+    }
+    .background-white {
+        background-color: #FFFFFF;
+    }
+    .background-grey {
+        background-color: #f2f2f2;
+    }
+}
