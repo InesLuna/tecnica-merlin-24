@@ -5,7 +5,7 @@ import SearchInput from '../SearchInput/SearchInput';
 import './header.css';
 
 const Header = (props) => {
-  const { generalView, handleChange, errorView, detailView } = props;
+  const { generalView, handleChange, errorView, detailView, podcast } = props;
   
 
   return (
@@ -17,7 +17,7 @@ const Header = (props) => {
         }
       </div>
       <div className='navigation-section'>
-        <Breadcrum view={generalView ? 'generalView' : detailView ? 'detailView' : 'episodeView'} />
+        <Breadcrum view={generalView ? 'generalView' : detailView ? 'detailView' : 'episodeView'} podcast={podcast} />
       </div>
     </>
     

@@ -1,12 +1,29 @@
-import React, {useEffect} from 'react';
 import { Link } from "react-router-dom";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { detailSetActualId } from '../../reducer/detailSlice';
 import './itemCard.css';
+import { useEffect, useState } from "react";
 
 const ItemCard = (props) => {
   const { podcast, isDetailview } = props;
   const dispatch = useDispatch();
+  const podcastListSelector = (state) => state.list.value;
+  const podcastList = useSelector(podcastListSelector);
+  const [ summary, setSummary ] = useState('');
+
+  const getSummary = () => {
+    const podcastInList = podcastList.filter((p)=> {
+      return p['im:name'].label === podcast.collectionName
+    });
+    return podcastInList;
+  };
+
+  useEffect(()=> {
+    if(podcastList && podcast && isDetailview) {
+      const podcastInList = getSummary();
+      if(podcastInList)setSummary(podcastInList[0].summary.label);
+    }
+  }, [podcastList, podcast, isDetailview])
 
   const imageUrl = isDetailview ? podcast.artworkUrl100 : podcast['im:image'][2].label;
   const title = isDetailview ? podcast.collectionName :  podcast['im:name'].label;
@@ -31,7 +48,7 @@ const ItemCard = (props) => {
           <div>
             <p className='detail-card__title roboto-bold'>Description</p>
             <p className='detail-card__summary roboto-regular-italic'>
-              Cras fringilla ullamcorper lacinia. Interdum et malesuada fames ac ante ipsum primis in faucibus. In in tempor enim. Integer molestie sit amet leo sit amet consectetur. Donec sodales ligula ut pretium pulvinar. Curabitur malesuada purus diam, ut aliquam justo consectetur quis. Aenean sit amet tincidunt magna.
+              {summary}
             </p>
           </div>
         </div>

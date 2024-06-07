@@ -12,12 +12,12 @@ import './pages.css';
 const GeneralView = () => {
 
   const dispatch = useDispatch();
-  const productListSelector = (state) => state.list.value;
-  const productList = useSelector(productListSelector);
+  const podcastListSelector = (state) => state.list.value;
+  const podcastList = useSelector(podcastListSelector);
   const timestampListSelector = (state) => state.list.timestamp;
   const timestampList = useSelector(timestampListSelector);
 
-  const [ filterProductList, setFilterProductList ] = useState([]);
+  const [ filterPodcastList, setFilterPodcastList ] = useState([]);
   const [ inputValue, setInputValue ] = useState('');
   const [ showButton, setShowButton ] = useState(false);
 
@@ -33,10 +33,10 @@ const GeneralView = () => {
   useEffect(()=> {
     const date = new Date();
     const oneHour = 60 * 60 * 1000;
-    if((timestampList && (date - timestampList) > oneHour )|| productList.length <= 0 ) {
+    if((timestampList && (date - timestampList) > oneHour )|| podcastList.length <= 0 ) {
       dataList(); 
     }
-  }, [timestampList, productList]);
+  }, [timestampList, podcastList]);
 
   useEffect(() => {
     window.addEventListener('scroll', onScroll)
@@ -44,15 +44,15 @@ const GeneralView = () => {
   }, []);
 
   useEffect(()=> {
-    setFilterProductList(filterList(inputValue));
-  }, [productList, inputValue]);
+    setFilterPodcastList(filterList(inputValue));
+  }, [podcastList, inputValue]);
 
   const filterList = (text) => {
-    let list = productList;
+    let list = podcastList;
     const lowerText = text.toLowerCase();
-    if (lowerText !== '') {
-      list = productList.filter((p) => {
-        return p.model.toLowerCase().includes(lowerText) || p.brand.toLowerCase().includes(lowerText);
+    if (lowerText !== '' && podcastList) {
+      list = podcastList.filter((p) => {
+        return p['im:artist'].label.toLowerCase().includes(lowerText) || p['im:name'].label.toLowerCase().includes(lowerText);
       });
     }
     return list;
@@ -76,10 +76,10 @@ const GeneralView = () => {
     <div className='page-layout'>
       <Header generalView handleChange={handleChange}/>
       {
-        productList && productList.length > 0 ? (
+        filterPodcastList && filterPodcastList.length > 0 ? (
           <div className='cards-layout'>
             {
-              productList.map((p) => <ItemCard key={p.id.attributes['im:id']} podcast={p} /> )
+              filterPodcastList.map((p) => <ItemCard key={p.id.attributes['im:id']} podcast={p} /> )
             }
             {
               showButton ? <GoTopButton showButton={showButton}/> : null

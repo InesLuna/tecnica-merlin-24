@@ -55,7 +55,7 @@ const DetailView = () => {
   return (
 
     <div className='page-layout'>
-      <Header detailView />
+      <Header detailView podcast={actualPodcast && actualPodcast.length > 0 && actualPodcast} />
       {
         loading ? <Loader/> : (
           <>

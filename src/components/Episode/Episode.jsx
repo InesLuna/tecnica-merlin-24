@@ -1,6 +1,5 @@
 import './episode.css';
 
-
 const Episode = (props) => {
     const { episode } = props;
 

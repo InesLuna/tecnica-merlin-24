@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import './breadcrumb.css';
 
 const Breadcrum = (props) => {
 
-  const { view } = props;
-  const actualPodcastState = (state) => state.detailList.actualPodcast;
-  const actualPodcast = useSelector(actualPodcastState);
+  const { view, podcast } = props;
   const actualEpisodeState = (state) => state.detailList.actualEpisode;
   const actualEpisode = useSelector(actualEpisodeState);
 
@@ -16,8 +14,7 @@ const Breadcrum = (props) => {
   const homeLink = <Link to='/' className='breadcrumb__link'>Home</Link>;
 
   useEffect(()=>{
-    console.log(actualEpisode, 'bread')
-    if(actualPodcast && actualPodcast.length > 0) {
+    if(podcast && podcast.length > 0) {
       switch (view) {
         case'generalView':
         setBreadcrumbComponent(<p className='breadcrumb__text'>Home</p>);
@@ -25,7 +22,7 @@ const Breadcrum = (props) => {
         case'detailView':
           setBreadcrumbComponent(
             <>
-              {homeLink} <span className='breadcrumb__separator'>/</span><p className='breadcrumb__text'>{actualPodcast[0].collectionName}</p> 
+              {homeLink} <span className='breadcrumb__separator'>/</span><p className='breadcrumb__text'>{podcast[0].collectionName}</p> 
             </>
             );
           break;
@@ -33,9 +30,9 @@ const Breadcrum = (props) => {
           setBreadcrumbComponent(
             <>
               {homeLink}
-              <Link to={`/podcast/${actualPodcast[0].collectionId}`} className='breadcrumb__link'>
+              <Link to={`/podcast/${podcast[0].collectionId}`} className='breadcrumb__link'>
                 <span className='breadcrumb__separator'>/</span>
-                {actualPodcast[0].collectionName}
+                {podcast[0].collectionName}
               </Link>
               <span className='breadcrumb__separator'>/</span>
               <p className='breadcrumb__text'>{actualEpisode.trackName}</p> 
@@ -47,7 +44,7 @@ const Breadcrum = (props) => {
       }
     }
     
-  },[actualPodcast]);
+  },[podcast]);
 
 
   return (

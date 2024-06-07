@@ -1,4 +1,3 @@
-import React from 'react';
 import magnifying from '../../icons/magnifying.png'
 import './searchInput.css';
 

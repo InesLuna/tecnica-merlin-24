@@ -2,12 +2,11 @@
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
-    padding-top: 1.5rem;
     .search-input__wrapper {
         display: flex;
         flex-wrap: nowrap;
-        width: 14rem;
-        border-radius: 1.5rem;
+        width: 20rem;
+        border-radius: .5rem;
         background-color: #FFFFFF;
         border: 1px solid #999999;
     }
@@ -18,7 +17,7 @@
         border-radius: 1.5rem;
     }
     .search-input__icon {
-        width: 2.5rem;
+        width: 3rem;
         min-height: max-content;
         display: flex;
         align-items: center;
