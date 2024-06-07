@@ -15,7 +15,7 @@ const EpisodeView = () => {
 
     return (
       <div className='page-layout'>
-      <Header episodeView actualPodcast={actualPodcast && actualPodcast.length > 0 && actualPodcast} />
+      <Header episodeView podcast={actualPodcast && actualPodcast.length > 0 && actualPodcast}/>
       {
         loading ? <Loader/> : (
           <>
